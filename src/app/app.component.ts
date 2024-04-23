@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'World Map';
   countries: any [] = [];
   countryName = '';
-  countryValue: any  = {};
+  countryValue: any = null;
 
   
   
@@ -36,9 +36,11 @@ export class AppComponent {
    this.countryName = ((elements[0].className as any).baseVal);
   }
  
-  MouseOut(hoverName: HTMLElement, hoverName1: HTMLElement) {
+  MouseOut(hoverName: HTMLElement, hoverName1?: HTMLElement) {
     hoverName.style.fill = '';
-    hoverName1.style.fill = '';
+    if (hoverName1){hoverName1.style.fill = ''; }
+    
+    this.countryName = '';
   }
   onClick() {
     

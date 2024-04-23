@@ -3,7 +3,7 @@
   <div class="col1">
 
   <p>Click on a country to see the details</p>
-  <table>
+  <table *ngIf="countryValue">
     <tr>
       <td>Country: </td>
       <td>{{countryValue.countryName}}</td>
