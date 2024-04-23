@@ -29,16 +29,13 @@ export class AppComponent {
     
   }
  
-
-  MouseOver(hoverName: HTMLElement, hoverName1: HTMLElement) {
-    
-    this.countryName = ((hoverName.className as any).baseVal);
-
-  
-    hoverName.style.fill = 'red';
-    hoverName1.style.fill = 'red';
-   
+  MouseOver(...elements: HTMLElement[]){
+   for (const element of elements){
+    element.style.fill = 'red';
+   }
+   this.countryName = ((elements[0].className as any).baseVal);
   }
+ 
   MouseOut(hoverName: HTMLElement, hoverName1: HTMLElement) {
     hoverName.style.fill = '';
     hoverName1.style.fill = '';
