@@ -35,13 +35,12 @@ export class AppComponent {
    }
    this.countryName = ((elements[0].className as any).baseVal);
   }
- 
-  MouseOut(hoverName: HTMLElement, hoverName1?: HTMLElement) {
-    hoverName.style.fill = '';
-    if (hoverName1){hoverName1.style.fill = ''; }
-    
-    this.countryName = '';
-  }
+  MouseOut(...elements: HTMLElement[]) {
+  for (const element of elements){
+    element.style.fill = '';
+   }
+   this.countryName = '';
+ }
   onClick() {
     
   this.countryValue = this.countries.find(c  => c.countryName === this.countryName);
