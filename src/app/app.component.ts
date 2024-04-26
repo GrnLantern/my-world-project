@@ -11,19 +11,21 @@ export class AppComponent {
   countries: any [] = [];
   countryName = '';
   countryValue: any = null;
+  dataSet: any [] = [];
+  countryInfo: any = null;
 
   
   
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private httpClient2: HttpClient) {
 
-    // this.httpClient2.get('https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?source=2&date=2022&format=json&per_page=2022').subscribe((data: any)=>{
-    //   this.dataSet = data[1];
+    this.httpClient2.get('https://api.worldbank.org/v2/country?format=json&per_page=300').subscribe((data: any)=>{
+      this.dataSet = data[1];
       
-    // });
+    });
     this.httpClient.get('http://api.geonames.org/countryInfoJSON?username=afis343').subscribe((data: any) => {
       this.countries = data.geonames;
-      console.log(this.countries);
+     
      
     });
     
@@ -44,7 +46,7 @@ export class AppComponent {
   onClick() {
     
   this.countryValue = this.countries.find(c  => c.countryName === this.countryName);
- 
+  this.countryInfo = this.dataSet.find(c => c.name === this.countryName);
 
     
   }
